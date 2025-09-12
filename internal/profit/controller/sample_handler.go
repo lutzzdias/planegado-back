@@ -1,7 +1,7 @@
 package controller
 
 import (
-	"planegado/internal/investment/domain/usecase"
+	"planegado/internal/profit/domain/usecase"
 	"planegado/pkg/logger"
 	"planegado/pkg/response"
 

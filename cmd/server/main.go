@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 	"log"
-	"planegado/internal/investment/controller"
+	"planegado/internal/profit/controller"
 	"planegado/pkg/config"
 	"planegado/pkg/logger"
 )

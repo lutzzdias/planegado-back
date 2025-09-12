@@ -1,7 +1,7 @@
 package usecase
 
 import (
-	"planegado/internal/investment/domain/entity"
+	"planegado/internal/profit/domain/entity"
 	"strings"
 )
 
