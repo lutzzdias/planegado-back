@@ -1,8 +1,9 @@
 package controller
 
 import (
-	"planegado/internal/usecase"
 	"planegado/pkg/logger"
+
+	"planegado/investment/domain/usecase"
 
 	"github.com/gin-gonic/gin"
 )

@@ -1,7 +1,9 @@
 package usecase
 
-import "planegado/internal/entity"
-import "strings"
+import (
+	"planegado/investment/domain/entity"
+	"strings"
+)
 
 type SampleUsecase interface {
 	GetSample(value string) entity.Sample
