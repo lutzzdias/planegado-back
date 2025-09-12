@@ -1,10 +1,11 @@
 package controller
 
 import (
-	"github.com/gin-gonic/gin"
 	"planegado/internal/usecase"
 	"planegado/pkg/logger"
 	"planegado/pkg/response"
+
+	"github.com/gin-gonic/gin"
 )
 
 type SampleHandler struct {
