@@ -1,4 +1,4 @@
-module github.com/lutzzdias/planegado-back
+module planegado
 
 go 1.22.2
 
