@@ -6,11 +6,13 @@ import (
 )
 
 func main() {
-	log.Info("Iniciando aplicação...")
+	log.Info("App start")
 
-	r := gin.Default()
-	r.GET("/hello", func(c *gin.Context) {
+	router := gin.Default()
+
+	router.GET("/hello", func(c *gin.Context) {
 		c.JSON(200, gin.H{"message": "Hello, API!"})
 	})
-	r.Run(":8080")
+
+	router.Run(":8080")
 }
