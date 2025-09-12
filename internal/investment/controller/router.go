@@ -3,7 +3,7 @@ package controller
 import (
 	"planegado/pkg/logger"
 
-	"planegado/investment/domain/usecase"
+	"planegado/internal/investment/domain/usecase"
 
 	"github.com/gin-gonic/gin"
 )
