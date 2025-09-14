@@ -5,11 +5,12 @@ import (
 	log "planegado/pkg/logger"
 )
 
+// swagger:model Herd
 type Herd struct {
-	NumberOfAnimals       int
-	TotalWeight           float64
-	PriceKg               float64
-	WeightCalculationType enums.WeightCalculationType
+	NumberOfAnimals       int                         `json:"numberOfAnimals"`
+	TotalWeight           float64                     `json:"totalWeight"`
+	PriceKg               float64                     `json:"priceKg"`
+	WeightCalculationType enums.WeightCalculationType `json:"weightCalculationType"`
 }
 
 func (h *Herd) CalcMediumWeight() float64 {

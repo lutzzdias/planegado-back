@@ -1,0 +1,114 @@
+basePath: /api/v1
+definitions:
+  entity.ExpectedProfit:
+    properties:
+      feed:
+        $ref: '#/definitions/entity.Feed'
+      investment:
+        $ref: '#/definitions/entity.InitialInvestment'
+      profit:
+        type: number
+      sale:
+        $ref: '#/definitions/entity.Sale'
+    type: object
+  entity.Feed:
+    properties:
+      expectedGmd:
+        type: number
+      percentageAliveWeight:
+        type: number
+      priceKg:
+        type: number
+      regime:
+        $ref: '#/definitions/enums.FeedRegime'
+    type: object
+  entity.Herd:
+    properties:
+      numberOfAnimals:
+        type: integer
+      priceKg:
+        type: number
+      totalWeight:
+        type: number
+      weightCalculationType:
+        $ref: '#/definitions/enums.WeightCalculationType'
+    type: object
+  entity.InitialInvestment:
+    properties:
+      avgWeight:
+        format: float64
+        type: number
+      perHead:
+        format: float64
+        type: number
+      totalValue:
+        format: float64
+        type: number
+    type: object
+  entity.ProfitRequest:
+    properties:
+      days:
+        type: integer
+      feed:
+        $ref: '#/definitions/entity.Feed'
+      herd:
+        $ref: '#/definitions/entity.Herd'
+      sale:
+        $ref: '#/definitions/entity.Sale'
+    type: object
+  entity.Sale:
+    properties:
+      calculationType:
+        $ref: '#/definitions/enums.WeightCalculationType'
+      expectedDate:
+        type: string
+      finalAvgWeight:
+        type: number
+      priceKg:
+        type: number
+    type: object
+  enums.FeedRegime:
+    enum:
+    - 0
+    - 1
+    type: integer
+    x-enum-varnames:
+    - FeedRegimeOpen
+    - FeedRegimeConfinedSemi
+  enums.WeightCalculationType:
+    enum:
+    - 0
+    - 1
+    type: integer
+    x-enum-varnames:
+    - WeightCalculationAverage
+    - WeightCalculationTotal
+info:
+  contact: {}
+  description: API para cálculo de lucro esperado
+  title: Profit API
+  version: "1.0"
+paths:
+  /profit/calculate:
+    post:
+      consumes:
+      - application/json
+      description: Recebe dados de rebanho, ração e venda e retorna o lucro esperado
+      parameters:
+      - description: Dados de entrada
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/entity.ProfitRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/entity.ExpectedProfit'
+      summary: Calcula o lucro esperado
+      tags:
+      - Profit
+swagger: "2.0"

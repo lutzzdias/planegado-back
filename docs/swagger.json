@@ -1,0 +1,172 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "API para cálculo de lucro esperado",
+        "title": "Profit API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/profit/calculate": {
+            "post": {
+                "description": "Recebe dados de rebanho, ração e venda e retorna o lucro esperado",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Profit"
+                ],
+                "summary": "Calcula o lucro esperado",
+                "parameters": [
+                    {
+                        "description": "Dados de entrada",
+                        "name": "input",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/entity.ProfitRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/entity.ExpectedProfit"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "entity.ExpectedProfit": {
+            "type": "object",
+            "properties": {
+                "feed": {
+                    "$ref": "#/definitions/entity.Feed"
+                },
+                "investment": {
+                    "$ref": "#/definitions/entity.InitialInvestment"
+                },
+                "profit": {
+                    "type": "number"
+                },
+                "sale": {
+                    "$ref": "#/definitions/entity.Sale"
+                }
+            }
+        },
+        "entity.Feed": {
+            "type": "object",
+            "properties": {
+                "expectedGmd": {
+                    "type": "number"
+                },
+                "percentageAliveWeight": {
+                    "type": "number"
+                },
+                "priceKg": {
+                    "type": "number"
+                },
+                "regime": {
+                    "$ref": "#/definitions/enums.FeedRegime"
+                }
+            }
+        },
+        "entity.Herd": {
+            "type": "object",
+            "properties": {
+                "numberOfAnimals": {
+                    "type": "integer"
+                },
+                "priceKg": {
+                    "type": "number"
+                },
+                "totalWeight": {
+                    "type": "number"
+                },
+                "weightCalculationType": {
+                    "$ref": "#/definitions/enums.WeightCalculationType"
+                }
+            }
+        },
+        "entity.InitialInvestment": {
+            "type": "object",
+            "properties": {
+                "avgWeight": {
+                    "type": "number",
+                    "format": "float64"
+                },
+                "perHead": {
+                    "type": "number",
+                    "format": "float64"
+                },
+                "totalValue": {
+                    "type": "number",
+                    "format": "float64"
+                }
+            }
+        },
+        "entity.ProfitRequest": {
+            "type": "object",
+            "properties": {
+                "days": {
+                    "type": "integer"
+                },
+                "feed": {
+                    "$ref": "#/definitions/entity.Feed"
+                },
+                "herd": {
+                    "$ref": "#/definitions/entity.Herd"
+                },
+                "sale": {
+                    "$ref": "#/definitions/entity.Sale"
+                }
+            }
+        },
+        "entity.Sale": {
+            "type": "object",
+            "properties": {
+                "calculationType": {
+                    "$ref": "#/definitions/enums.WeightCalculationType"
+                },
+                "expectedDate": {
+                    "type": "string"
+                },
+                "finalAvgWeight": {
+                    "type": "number"
+                },
+                "priceKg": {
+                    "type": "number"
+                }
+            }
+        },
+        "enums.FeedRegime": {
+            "type": "integer",
+            "enum": [
+                0,
+                1
+            ],
+            "x-enum-varnames": [
+                "FeedRegimeOpen",
+                "FeedRegimeConfinedSemi"
+            ]
+        },
+        "enums.WeightCalculationType": {
+            "type": "integer",
+            "enum": [
+                0,
+                1
+            ],
+            "x-enum-varnames": [
+                "WeightCalculationAverage",
+                "WeightCalculationTotal"
+            ]
+        }
+    }
+}

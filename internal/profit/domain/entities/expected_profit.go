@@ -1,10 +1,12 @@
 package entity
 
+// ExpectedProfit resultado do cálculo
+// swagger:model ExpectedProfit
 type ExpectedProfit struct {
-	Investment *InitialInvestment
-	Feed       *Feed
-	Sale       *Sale
-	Profit     float64
+	Investment *InitialInvestment `json:"investment"`
+	Feed       *Feed              `json:"feed"`
+	Sale       *Sale              `json:"sale"`
+	Profit     float64            `json:"profit"`
 }
 
 func (ep *ExpectedProfit) CalcProfit(herd *Herd, days int) float64 {

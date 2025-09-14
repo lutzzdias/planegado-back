@@ -5,11 +5,13 @@ import (
 	log "planegado/pkg/logger"
 )
 
+// Feed representa a ração
+// swagger:model Feed
 type Feed struct {
-	PercentageAliveWeight float64
-	ExpectedGMD           float64
-	PriceKg               float64
-	Regime                enums.FeedRegime
+	PercentageAliveWeight float64          `json:"percentageAliveWeight"`
+	ExpectedGMD           float64          `json:"expectedGmd"`
+	PriceKg               float64          `json:"priceKg"`
+	Regime                enums.FeedRegime `json:"regime"`
 }
 
 func (f *Feed) CalcDailyConsumption(avgWeight float64) float64 {
