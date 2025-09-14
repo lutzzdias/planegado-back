@@ -1,9 +1,15 @@
 package entity
 
+import (
+	"planegado/internal/profit/domain/enums"
+	log "planegado/pkg/logger"
+)
+
 type Herd struct {
-	NumberOfAnimals int
-	TotalWeight     float64
-	PriceKg         float64
+	NumberOfAnimals       int
+	TotalWeight           float64
+	PriceKg               float64
+	WeightCalculationType enums.WeightCalculationType
 }
 
 func (h *Herd) CalcMediumWeight() float64 {
@@ -14,9 +20,20 @@ func (h *Herd) CalcMediumWeight() float64 {
 }
 
 func (h *Herd) CalcInvestment() *InitialInvestment {
+
+	if h.WeightCalculationType == enums.WeightCalculationTotal {
+		log.Info("Calculating investment using total weight")
+		return &InitialInvestment{
+			TotalValue: h.TotalWeight * h.PriceKg,
+			PerHead:    h.TotalWeight * h.PriceKg / float64(h.NumberOfAnimals),
+			AvgWeight:  h.CalcMediumWeight(),
+		}
+	}
+
+	avgWeight := h.CalcMediumWeight()
 	return &InitialInvestment{
-		TotalValue: float64(h.NumberOfAnimals) * h.CalcMediumWeight() * h.PriceKg,
-		PerHead:    h.CalcMediumWeight() * h.PriceKg,
-		AvgWeight:  h.CalcMediumWeight(),
+		TotalValue: float64(h.NumberOfAnimals) * avgWeight * h.PriceKg,
+		PerHead:    avgWeight * h.PriceKg,
+		AvgWeight:  avgWeight,
 	}
 }
