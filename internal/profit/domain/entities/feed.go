@@ -8,9 +8,9 @@ import (
 // Feed representa a ração
 // swagger:model Feed
 type Feed struct {
-	PercentageAliveWeight float64          `json:"percentageAliveWeight"`
-	ExpectedGMD           float64          `json:"expectedGmd"`
-	PriceKg               float64          `json:"priceKg"`
+	PercentageAliveWeight float64          `json:"percentageAliveWeight" example:"2.5"`
+	ExpectedGMD           float64          `json:"expectedGmd" example:"1.2"`
+	PriceKg               float64          `json:"priceKg" example:"5.5"`
 	Regime                enums.FeedRegime `json:"regime"`
 }
 

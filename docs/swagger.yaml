@@ -14,10 +14,13 @@ definitions:
   entity.Feed:
     properties:
       expectedGmd:
+        example: 1.2
         type: number
       percentageAliveWeight:
+        example: 2.5
         type: number
       priceKg:
+        example: 5.5
         type: number
       regime:
         $ref: '#/definitions/enums.FeedRegime'
@@ -25,13 +28,22 @@ definitions:
   entity.Herd:
     properties:
       numberOfAnimals:
+        example: 50
         type: integer
       priceKg:
+        example: 15
         type: number
       totalWeight:
+        example: 2000.5
         type: number
       weightCalculationType:
-        $ref: '#/definitions/enums.WeightCalculationType'
+        allOf:
+        - $ref: '#/definitions/enums.WeightCalculationType'
+        description: 0=Média, 1=Total
+        enum:
+        - 0
+        - 1
+        example: 0
     type: object
   entity.InitialInvestment:
     properties:
@@ -48,6 +60,7 @@ definitions:
   entity.ProfitRequest:
     properties:
       days:
+        example: 30
         type: integer
       feed:
         $ref: '#/definitions/entity.Feed'
@@ -59,12 +72,21 @@ definitions:
   entity.Sale:
     properties:
       calculationType:
-        $ref: '#/definitions/enums.WeightCalculationType'
+        allOf:
+        - $ref: '#/definitions/enums.WeightCalculationType'
+        description: 0=Média, 1=Total
+        enum:
+        - 0
+        - 1
+        example: 0
       expectedDate:
+        example: "2025-09-20T00:00:00Z"
         type: string
       finalAvgWeight:
+        example: 350
         type: number
       priceKg:
+        example: 20
         type: number
     type: object
   enums.FeedRegime:

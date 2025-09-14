@@ -65,13 +65,16 @@
             "type": "object",
             "properties": {
                 "expectedGmd": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 1.2
                 },
                 "percentageAliveWeight": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 2.5
                 },
                 "priceKg": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 5.5
                 },
                 "regime": {
                     "$ref": "#/definitions/enums.FeedRegime"
@@ -82,16 +85,29 @@
             "type": "object",
             "properties": {
                 "numberOfAnimals": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 50
                 },
                 "priceKg": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 15
                 },
                 "totalWeight": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 2000.5
                 },
                 "weightCalculationType": {
-                    "$ref": "#/definitions/enums.WeightCalculationType"
+                    "description": "0=Média, 1=Total",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.WeightCalculationType"
+                        }
+                    ],
+                    "example": 0
                 }
             }
         },
@@ -116,7 +132,8 @@
             "type": "object",
             "properties": {
                 "days": {
-                    "type": "integer"
+                    "type": "integer",
+                    "example": 30
                 },
                 "feed": {
                     "$ref": "#/definitions/entity.Feed"
@@ -133,16 +150,29 @@
             "type": "object",
             "properties": {
                 "calculationType": {
-                    "$ref": "#/definitions/enums.WeightCalculationType"
+                    "description": "0=Média, 1=Total",
+                    "enum": [
+                        0,
+                        1
+                    ],
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/enums.WeightCalculationType"
+                        }
+                    ],
+                    "example": 0
                 },
                 "expectedDate": {
-                    "type": "string"
+                    "type": "string",
+                    "example": "2025-09-20T00:00:00Z"
                 },
                 "finalAvgWeight": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 350
                 },
                 "priceKg": {
-                    "type": "number"
+                    "type": "number",
+                    "example": 20
                 }
             }
         },

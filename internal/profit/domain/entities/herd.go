@@ -7,10 +7,10 @@ import (
 
 // swagger:model Herd
 type Herd struct {
-	NumberOfAnimals       int                         `json:"numberOfAnimals"`
-	TotalWeight           float64                     `json:"totalWeight"`
-	PriceKg               float64                     `json:"priceKg"`
-	WeightCalculationType enums.WeightCalculationType `json:"weightCalculationType"`
+	NumberOfAnimals       int                         `json:"numberOfAnimals" example:"50"`
+	TotalWeight           float64                     `json:"totalWeight" example:"2000.5"`
+	PriceKg               float64                     `json:"priceKg" example:"15.0"`
+	WeightCalculationType enums.WeightCalculationType `json:"weightCalculationType" enums:"0,1" example:"0"` // 0=Média, 1=Total
 }
 
 func (h *Herd) CalcMediumWeight() float64 {

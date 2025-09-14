@@ -6,13 +6,12 @@ import (
 	"time"
 )
 
-// Sale representa a venda
 // swagger:model Sale
 type Sale struct {
-	FinalAvgWeight  float64                     `json:"finalAvgWeight"`
-	PriceKg         float64                     `json:"priceKg"`
-	ExpectedDate    time.Time                   `json:"expectedDate"`
-	CalculationType enums.WeightCalculationType `json:"calculationType"`
+	FinalAvgWeight  float64                     `json:"finalAvgWeight" example:"350.0"`
+	PriceKg         float64                     `json:"priceKg" example:"20.0"`
+	ExpectedDate    time.Time                   `json:"expectedDate" example:"2025-09-20T00:00:00Z"`
+	CalculationType enums.WeightCalculationType `json:"calculationType" enums:"0,1" example:"0"` // 0=Média, 1=Total
 }
 
 func (s *Sale) CalcTotalValue(herd *Herd) float64 {
