@@ -7,8 +7,8 @@ package main
 import (
 	"fmt"
 	"log"
+	profitController "planegado/api"
 	_ "planegado/docs"
-	profitController "planegado/internal/profit/controller"
 	"planegado/pkg/config"
 	"planegado/pkg/logger"
 
